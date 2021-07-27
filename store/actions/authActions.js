@@ -36,6 +36,7 @@ export const signin = (userData, navigation) => {
 
 const setUser = (token) => async (dispatch) => {
   if (token) {
+    console.log(token)
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization=`Bearer ${token}`;
     return dispatch( {

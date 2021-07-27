@@ -1,8 +1,14 @@
+//Libraries
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Center, Button } from "native-base";
-import React from "react";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
+
+//Components
 import { SIGN_IN, SIGN_UP } from "../Navigation/types";
+
+
+
 
 const Home = ({ navigation }) => {
   return (
@@ -14,11 +20,7 @@ const Home = ({ navigation }) => {
             uri: "https://www.kolpaper.com/wp-content/uploads/2021/02/whatsapp-wallpaper-12.png",
           }}
         >
-          <Text
-            style={styles.mainText}
-          >
-            Welcome To The Light Speed Chat
-          </Text>
+          <Text style={styles.mainText}>Welcome To The Light Speed Chat</Text>
 
           <StatusBar style="auto" />
           <Button
@@ -46,35 +48,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    // backgroundColor: "transparent"
-    // headerTransparent:true
   },
   image: {
     width: 500,
     height: 800,
   },
-  mainText:{
+  mainText: {
     fontSize: 40,
     color: "white",
     marginTop: 165,
     textAlign: "center",
     fontWeight: "bold",
     fontFamily: "serif",
-    letterSpacing: 3
+    letterSpacing: 3,
   },
   signin: {
     width: 100,
     marginLeft: 200,
     marginTop: 50,
-     backgroundColor: "#dc2f02",
-     fontWeight:"bold"
+    backgroundColor: "#dc2f02",
+    fontWeight: "bold",
   },
   signup: {
     width: 100,
     marginLeft: 200,
     marginTop: 100,
     backgroundColor: "#dc2f02",
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
   txt: {
     color: "white",

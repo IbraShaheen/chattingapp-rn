@@ -25,14 +25,13 @@ const StackNavigator = () => {
         cardStyle: {
           backgroundColor: "#023047",
         },
-      
       }}
     >
-      <Screen name={HOME} component={Home} options={{  headerShown: false }} />
+      <Screen name={HOME} component={Home} options={{ headerShown: false }} />
 
-      <Screen name={SIGN_UP} component={Signup} />
+      <Screen name={SIGN_UP} component={Signup} options={{ title: "Signup" }} />
 
-      <Screen name={SIGN_IN} component={Signin} />
+      <Screen name={SIGN_IN} component={Signin} options={{ title: "Signin" }} />
     </Navigator>
   );
 };
