@@ -1,20 +1,35 @@
-import { StatusBar } from "expo-status-bar";
+// Libraries
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Provider } from "react-redux";
+import { StyleSheet} from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { NativeBaseProvider } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
+
+// Components
+import StackNavigator from "./components/Navigation/StackNavigator";
+import store from "./store/reducers/";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Test from app</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NativeBaseProvider>
+
+        <NavigationContainer>
+
+          <StackNavigator />
+
+        </NavigationContainer>
+
+        <StatusBar style="auto" />
+      </NativeBaseProvider>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
