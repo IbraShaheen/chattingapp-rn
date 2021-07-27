@@ -1,8 +1,9 @@
 //Libraries
-import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { Button, Center, Input } from "native-base";
+import React from "react";
+import { Text, View, TextInput, StyleSheet } from "react-native";
+import { Button, Center } from "native-base";
 import { useDispatch } from "react-redux";
+import { useForm, Controller } from "react-hook-form";
 
 //Components
 import { signin } from "../../store/actions/authActions";
@@ -10,69 +11,110 @@ import { SIGN_UP } from "../Navigation/types";
 
 
 
+
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
-  const [user, setUser] = useState({
-    username: "",
-    password: "",
-  });
-  const handleSubmit = () => {
-    dispatch(signin(user, navigation));
-  };
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => dispatch(signin(data, navigation));
+
   return (
+    <Center>
+      <View>
+        <View style={{ marginTop: 150 }}>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                id="username"
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={onChange}
+                placeholder="Username"
+                placeholderTextColor="#eee"
+                color="white"
+              />
+            )}
+            name="username"
+            defaultValue=""
+          />
+          {errors.username && (
+            <Text style={{ color: "red" }}>username is required</Text>
+          )}
 
-    <View style={styles.mainVeiw}>
-      <Input
-      style={styles.inputs}
-        autoCapitalize="none"
-        color="white"
-        onChangeText={(username) => setUser({ ...user, username })}
-        w="80%"
-        mx={4}
-        placeholder="enter username"
-        isRequired={true}
-      />
-      <Input
-      style={styles.inputs}
-        secureTextEntry={true}
-        autoCapitalize="none"
-        color="white"
-        onChangeText={(password) => setUser({ ...user, password })}
-        w="80%"
-        mx={4}
-        placeholder="enter password"
-        isRequired={true}
-      />
-      <Center>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                id="password"
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={onChange}
+                placeholder="Password"
+                placeholderTextColor="#eee"
+                color="white"
+              />
+            )}
+            name="password"
+            defaultValue=""
+          />
+          {errors.password && (
+            <Text style={{ color: "red" }}>password is required</Text>
+          )}
 
-        <Button onPress={handleSubmit} style={{ width: 100, marginTop: 10, backgroundColor: "#dc2f02"}}>
-          Sign in
-        </Button>
-      </Center>
+          {/* <Button  style={{color:"red"}} type="Submit" title="Submit" onPress={handleSubmit(onSubmit)} /> */}
 
-      <Center>
+          <Button
+            type="Submit"
+            onPress={handleSubmit(onSubmit)}
+            style={styles.inbtn}
+          >
+            Signin
+          </Button>
 
-
-        <Text style={styles.regText}>Don't have an account ?</Text>
-        <Text
-          onPress={() => navigation.navigate(SIGN_UP)}
-          style={styles.signupbtn}
-        >
-          Signup here
-        </Text>
-      </Center>
-    </View>
-
+          <Center>
+            <Text style={styles.regText}>Don't have an account ?</Text>
+            <Text
+              onPress={() => navigation.navigate(SIGN_UP)}
+              style={styles.signupbtn}
+            >
+              Signup here
+            </Text>
+          </Center>
+        </View>
+      </View>
+    </Center>
   );
 };
 
 export default Signin;
 
 const styles = StyleSheet.create({
-  signupbtn:{
-    width: 300, marginTop:25, textAlign:"center", color:"white", fontSize:17, textDecorationLine:"underline", textDecorationColor:"#dc2f02"
+  btn: {
+    width: 300,
+    marginTop: 25,
+    textAlign: "center",
+    color: "white",
+    fontSize: 17,
+    textDecorationLine: "underline",
+    textDecorationColor: "#dc2f02",
   },
-  regText:{ width: 300, marginTop:25, textAlign:"center", color:"white", fontSize:17 },
+  regText: {
+    width: 300,
+    marginTop: 25,
+    textAlign: "center",
+    color: "white",
+    fontSize: 17,
+  },
   inputs: {
     margin: 5,
     fontSize: 20,
@@ -82,5 +124,21 @@ const styles = StyleSheet.create({
     padding: 35,
     alignItems: "center",
     justifyContent: "center",
+  },
+  signupbtn: {
+    width: 300,
+    marginTop: 25,
+    textAlign: "center",
+    fontSize: 17,
+    textDecorationLine: "underline",
+    textDecorationColor: "#dc2f02",
+    color: "white",
+  },
+  inbtn: {
+    width: 100,
+    marginLeft: 100,
+    marginTop: 50,
+    backgroundColor: "#dc2f02",
+    fontWeight: "bold",
   },
 });

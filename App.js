@@ -1,7 +1,6 @@
 // Libraries
 import React from "react";
 import { Provider } from "react-redux";
-import { StyleSheet} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
@@ -27,10 +26,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
