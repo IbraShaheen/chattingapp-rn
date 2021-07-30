@@ -4,8 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 //Components
 import instance from "./instance";
-import { SET_USER } from "./types";
-import { HOME } from "../../components/Navigation/types";
+import { FETCH_USERS, SET_USER } from "./types";
+import {  CHAT_LIST, GROUP_FORM, MAIN } from "../../components/Navigation/types";
 
 
 export const signup = (userData, navigation) => {
@@ -13,7 +13,7 @@ export const signup = (userData, navigation) => {
     try {
       const res = await instance.post("/signup", userData);
       dispatch(setUser(res.data.token));
-      navigation.navigate(HOME);
+      navigation.navigate(MAIN);
     } catch (error) {
       console.log(error.message);
     }
@@ -26,12 +26,18 @@ export const signin = (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      navigation.navigate(HOME);
+      navigation.navigate(MAIN);
+      // navigation.navigate(GROUP_FORM);
     } catch (error) {
       console.log(error.message);
     }
   };
 };
+
+export const signout = () =>{
+ 
+  return setUser()
+}
 
 
 const setUser = (token) => async (dispatch) => {
@@ -70,3 +76,18 @@ export const checkForToken = () => async (dispatch)=> {
     }
     dispatch(setUser());
   };
+
+  export const fetchUsers = ()=>{
+    return async (dispatch)=>{
+    try {
+        const res = await instance.get("/fetch");
+        console.log(res.data)
+        dispatch({
+            type:FETCH_USERS,
+            payload: res.data,
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+  
+  }}

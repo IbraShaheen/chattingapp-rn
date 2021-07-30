@@ -9,9 +9,6 @@ import { useForm, Controller } from "react-hook-form";
 import { signin } from "../../store/actions/authActions";
 import { SIGN_UP } from "../Navigation/types";
 
-
-
-
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
   const {
@@ -45,7 +42,7 @@ const Signin = ({ navigation }) => {
             defaultValue=""
           />
           {errors.username && (
-            <Text style={{ color: "red" }}>username is required</Text>
+            <Text style={styles.redTxt}>username is required</Text>
           )}
 
           <Controller
@@ -68,10 +65,8 @@ const Signin = ({ navigation }) => {
             defaultValue=""
           />
           {errors.password && (
-            <Text style={{ color: "red" }}>password is required</Text>
+            <Text style={styles.redTxt}>password is required</Text>
           )}
-
-          {/* <Button  style={{color:"red"}} type="Submit" title="Submit" onPress={handleSubmit(onSubmit)} /> */}
 
           <Button
             type="Submit"
@@ -138,7 +133,8 @@ const styles = StyleSheet.create({
     width: 100,
     marginLeft: 100,
     marginTop: 50,
-    backgroundColor: "#dc2f02",
+    backgroundColor: "#3f37c9",
     fontWeight: "bold",
   },
+  redTxt: { color: "red" },
 });

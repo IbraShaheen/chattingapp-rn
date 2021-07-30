@@ -7,9 +7,6 @@ import { StyleSheet, Text, View, ImageBackground } from "react-native";
 //Components
 import { SIGN_IN, SIGN_UP } from "../Navigation/types";
 
-
-
-
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -66,14 +63,14 @@ const styles = StyleSheet.create({
     width: 100,
     marginLeft: 200,
     marginTop: 50,
-    backgroundColor: "#dc2f02",
+    backgroundColor: "#3f37c9",
     fontWeight: "bold",
   },
   signup: {
     width: 100,
     marginLeft: 200,
     marginTop: 100,
-    backgroundColor: "#dc2f02",
+    backgroundColor: "#3f37c9",
     fontWeight: "bold",
   },
   txt: {

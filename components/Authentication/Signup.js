@@ -9,9 +9,6 @@ import { Text, View, TextInput, StyleSheet } from "react-native";
 import { SIGN_IN } from "../Navigation/types";
 import { signup } from "../../store/actions/authActions";
 
-
-
-
 const Signup = ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -45,7 +42,7 @@ const Signup = ({ navigation }) => {
             defaultValue=""
           />
           {errors.fullname && (
-            <Text style={{ color: "red" }}>fullname is required</Text>
+            <Text style={styles.redTxt}>fullname is required</Text>
           )}
 
           <Controller
@@ -68,7 +65,7 @@ const Signup = ({ navigation }) => {
             defaultValue=""
           />
           {errors.username && (
-            <Text style={{ color: "red" }}>username is required</Text>
+            <Text style={styles.redTxt}>username is required</Text>
           )}
 
           <Controller
@@ -94,11 +91,9 @@ const Signup = ({ navigation }) => {
             name="email"
             defaultValue=""
           />
+          {errors.email && <Text style={styles.redTxt}>email is required</Text>}
           {errors.email && (
-            <Text style={{ color: "red" }}>email is required</Text>
-          )}
-          {errors.email && (
-            <Text style={{ color: "red" }} role="alert">
+            <Text style={styles.redTxt} role="alert">
               {errors.email.message}
             </Text>
           )}
@@ -123,7 +118,7 @@ const Signup = ({ navigation }) => {
             defaultValue=""
           />
           {errors.password && (
-            <Text style={{ color: "red" }}>password is required</Text>
+            <Text style={styles.redTxt}>password is required</Text>
           )}
 
           <Button
@@ -188,7 +183,8 @@ const styles = StyleSheet.create({
     width: 100,
     marginLeft: 100,
     marginTop: 50,
-    backgroundColor: "#dc2f02",
+    backgroundColor: "#3f37c9",
     fontWeight: "bold",
   },
+  redTxt: { color: "red" },
 });
