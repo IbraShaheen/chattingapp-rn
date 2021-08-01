@@ -4,26 +4,21 @@ const initialState = {
   user: null,
   allUsers:[],
   loading:true,
-  //  allUsers : [
-  //   { username: "ahmad", id: 1 },
-  //   { username: "amjad", id: 2 },
-  //   { username: "ibra", id: 3 },
-  //   { username: "coded", id: 4 },
-  // ]
+
 };
 
 const authReducer = (state = initialState, action) => {
   
   switch (action.type) {
     case SET_USER:
-      console.log("RED")
+      console.log("RED SET USER")
       return {
         ...state,
         user: action.payload,
         loading:false,
       };
       case FETCH_USERS:
-        console.log("REDDDD")
+        console.log("REDDDD FETCH")
       return {
         ...state,
         allUsers: action.payload,
