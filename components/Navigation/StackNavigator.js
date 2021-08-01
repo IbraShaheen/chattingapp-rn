@@ -11,6 +11,7 @@ import ChatForm from "../Chat/ChatForm";
 import ChatList from "../Chat/ChatList";
 import GroupForm from "../Group/GroupForm";
 import GroupList from "../Group/GroupList";
+import ChatButton from "../Chat/ChatButton"
 
 import {
   HOME,
@@ -21,7 +22,10 @@ import {
   CHAT_LIST,
   GROUP_FORM,
   GROUP_LIST,
+  ROOM,
 } from "./types";
+import Room from "../Room/Room";
+import GroupButton from "../Group/GroupButton";
 
 const StackNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -49,7 +53,9 @@ const StackNavigator = () => {
       <Screen
         name={CHAT_LIST}
         component={ChatList}
-        options={{ headerShown: false }}
+        options={{ title: "Chats",
+        headerRight:() => (<ChatButton/>) }}
+        
       />
       <Screen
         name={CHAT_FORM}
@@ -64,8 +70,12 @@ const StackNavigator = () => {
       <Screen
         name={GROUP_LIST}
         component={GroupList}
-        options={{ headerShown: false }}
+        options={{ title: "Groups",
+        headerRight:() => (<GroupButton/>) }}
       />
+
+     <Screen name={ROOM} component={Room} options={{ title: "group or chat name" }} />
+
     </Navigator>
   );
 };

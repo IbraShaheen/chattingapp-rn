@@ -4,10 +4,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import SelectBox from "react-native-multi-selectbox";
 import { xorBy } from "lodash";
-import { Input, Button } from "native-base";
+import { Input, Button, Center } from "native-base";
 import { useDispatch } from "react-redux";
 import { GROUP_LIST } from "../Navigation/types";
 import { createRoom } from "../../store/actions/roomActions";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 const GroupForm = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -29,34 +31,66 @@ const GroupForm = ({ navigation }) => {
   };
   console.log(room);
   return (
-    <View style={{ margin: 30, backgroundColor: "white" }}>
+    <SafeAreaView>
+    <View style={{ margin: 20, backgroundColor: "#fdf0d5", borderRadius:15,
+  padding:15, marginBottom:80 }}>
+      <Center>
       <View style={{ height: 40 }} />
-      <Text style={{ fontSize: 20, paddingBottom: 10 }}>MultiSelect Demo</Text>
+      <Text style={{ fontSize: 20, paddingBottom: 10, fontWeight:"bold" }}>Create a group</Text>
+      <Text>{"\n"}</Text>
       <SelectBox
-        label="Select multiple"
+        label="Select group members"
         options={TheListOfUsers}
         selectedValues={selectedUsers}
         onMultiSelect={onMultiChange()}
         onTapClose={onMultiChange()}
         isMulti
+        
+       
       />
+      <Text>{"\n"} {"\n"}</Text>
       <Input
         autoCapitalize="none"
         color="black"
         onChangeText={handleChange}
         w="80%"
         mx={4}
-        placeholder="enter group name"
+        placeholder="enter the group name"
+       isRequired
+        backgroundColor="#eee"
+      
       />
-      <Button
+      {room.users.length>1&&room.name ? <Button
         onPress={() =>
+          // dispatch(createRoom(room)) && navigation.navigate(GROUP_LIST)
           dispatch(createRoom(room)) && navigation.navigate(GROUP_LIST)
+
+           && setRoom({ users: [] }) && setSelectedUsers([])
         }
         style={styles.btn}
       >
         create a group
-      </Button>
+      </Button> : <Button disabled style={styles.btn}
+      >
+        create a group
+      </Button>}
+
+
+      {/* <Button disabled> create a group</Button> */}
+
+      {/* <Button
+        onPress={() =>
+          dispatch(createRoom(room)) && navigation.navigate(GROUP_LIST)
+          // && setRoom({ users: [] })
+        }
+        style={styles.btn}
+      >
+        create a group
+      </Button> */}
+      <Text>{"\n"} {"\n"}</Text>
+    </Center>
     </View>
+    </SafeAreaView>
   );
 };
 
@@ -64,10 +98,10 @@ export default GroupForm;
 
 const styles = StyleSheet.create({
   btn: {
-    width: 100,
-    marginLeft: 200,
+    width: 155,
     marginTop: 50,
-    backgroundColor: "#3f37c9",
+    backgroundColor: "#821752",
     fontWeight: "bold",
+    justifyContent:"center",
   },
 });

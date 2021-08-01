@@ -1,11 +1,13 @@
+import { Center } from 'native-base';
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet,Button, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
+import { GROUP_FORM } from '../Navigation/types';
 //components
 import GroupItem from './GroupItem';
 
-const GroupList = () => {
+const GroupList = ({navigation}) => {
    
     const rooms = useSelector((state) => state.rooms.rooms);
     const groupList = rooms
@@ -17,14 +19,32 @@ const GroupList = () => {
 
     return (
         <SafeAreaView>
-
-        <View>
+<Center>
+        <View style={styles.card}>
             <Text>{groupList}</Text>
+                        
+                {/* <Button title="new group" onPress={() => navigation.replace(GROUP_FORM)} /> */}
         </View>
+        </Center>
         </SafeAreaView>
     )
 }
 
 export default GroupList
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    card: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      flexWrap: "wrap",
+      width: "100%",
+      // backgroundColor: "#2a9d8f",
+      padding: 20,
+    },
+  });
+
+  // to reset the form :
+  //<Button title="new group" onPress={() => navigation.replace(GROUP_FORM)} />
+
