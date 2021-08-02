@@ -11,14 +11,13 @@ const authReducer = (state = initialState, action) => {
   
   switch (action.type) {
     case SET_USER:
-      console.log("RED SET USER")
       return {
         ...state,
         user: action.payload,
         loading:false,
       };
       case FETCH_USERS:
-        console.log("REDDDD FETCH")
+        console.log("FROM FETCH_USERS >>")
       return {
         ...state,
         allUsers: action.payload,
