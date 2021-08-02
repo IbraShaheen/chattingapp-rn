@@ -74,7 +74,8 @@ const StackNavigator = () => {
         headerRight:() => (<GroupButton/>) }}
       />
 
-     <Screen name={ROOM} component={Room} options={{ title: "group or chat name" }} />
+    <Screen name={ROOM} component={Room} options={({route})=>{
+            return {headerTitle : route.params._room.username}}} /> 
 
     </Navigator>
   );

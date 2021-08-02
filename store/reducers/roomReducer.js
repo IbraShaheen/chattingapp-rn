@@ -1,4 +1,4 @@
-import { NEW_ROOM } from "../actions/types";
+import { FETCH_ROOMS, NEW_ROOM } from "../actions/types";
 
 const initialState = {
   rooms: [],
@@ -6,6 +6,11 @@ const initialState = {
 
 const roomReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_ROOMS:
+      return {
+        ...state,
+        rooms: action.payload,
+      };
     case NEW_ROOM:
       const { room } = action.payload;
       return {

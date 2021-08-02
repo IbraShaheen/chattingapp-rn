@@ -1,38 +1,44 @@
-import { Center, List, Spinner } from "native-base";
+import { Center, Spinner } from "native-base";
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text,StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
-import { CHAT_FORM } from "../Navigation/types";
+
 
 //components
 import ChatItem from "./ChatItem";
 
 const ChatList = ({ navigation }) => {
   const _users = useSelector((state) => state.user.allUsers);
+
+  const user = useSelector((state) => state.user.user);
+
+  const otherUsers = _users.filter((_id) => _id.id !== user.id);
+
   const loading = useSelector((state) => state.user.loading);
   const rooms = useSelector((state) => state.rooms.rooms);
   if (loading) return <Spinner />;
 
+
+
   const chatList = rooms
     .filter((room) => room.usersId.length === 2)
-    .map((_room) => _users.find((_id) => _id.id === _room.usersId[0]));
+    .map((_room) => otherUsers.find((_id) => _room.usersId.includes(_id.id)));
+
+    const uniqueChatList = [...new Set(chatList)];
 
 
-    console.log(rooms)
-  // console.log(_users);
-  // console.log(chatList);
-
-  const newList = chatList.map((userobj) => (
-    <ChatItem _room={userobj} key={userobj.id} />
+  const newList = uniqueChatList.map((userobj) => (
+    <ChatItem _room={userobj} key={userobj.id} navigation={navigation} />
   ));
+
+
 
   return (
     <SafeAreaView>
  
     <Center style={styles.center}>
     <View style={styles.card}>
-      {/* <Button title="new chat" onPress={() => navigation.navigate(CHAT_FORM)} /> */}
       <Text>{newList}</Text>
     </View>
     </Center>
