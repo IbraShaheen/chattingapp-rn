@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Center, Button } from "native-base";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 
-//Components
+//Navigation
 import { SIGN_IN, SIGN_UP } from "../Navigation/types";
 
 const Home = ({ navigation }) => {

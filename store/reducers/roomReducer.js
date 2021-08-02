@@ -2,7 +2,7 @@ import { NEW_ROOM } from "../actions/types";
 
 const initialState = {
   rooms: [],
-}
+};
 
 const roomReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -12,6 +12,7 @@ const roomReducer = (state = initialState, action) => {
         ...state,
         rooms: [...state.rooms, room],
       };
+
     default:
       return state;
   }

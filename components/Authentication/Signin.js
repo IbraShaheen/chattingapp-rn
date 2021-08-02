@@ -5,28 +5,34 @@ import { Button, Center } from "native-base";
 import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 
-//Components
-import { signin } from "../../store/actions/authActions";
+//Navigation
 import { SIGN_UP } from "../Navigation/types";
+
+//Actions
+import { signin } from "../../store/actions/authActions";
 
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => dispatch(signin(data, navigation));
 
   return (
     <Center>
       <View>
+        {/*Remove inline styling */}
         <View style={{ marginTop: 150 }}>
           <Controller
             control={control}
             rules={{
               required: true,
             }}
+            //Value is unused
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 id="username"
@@ -41,8 +47,9 @@ const Signin = ({ navigation }) => {
             name="username"
             defaultValue=""
           />
+
           {errors.username && (
-            <Text style={styles.redTxt}>username is required</Text>
+            <Text style={styles.redTxt}>Username is required</Text>
           )}
 
           <Controller
@@ -50,6 +57,7 @@ const Signin = ({ navigation }) => {
             rules={{
               required: true,
             }}
+            //Value is unused
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 id="password"
@@ -64,6 +72,7 @@ const Signin = ({ navigation }) => {
             name="password"
             defaultValue=""
           />
+
           {errors.password && (
             <Text style={styles.redTxt}>password is required</Text>
           )}
@@ -77,7 +86,7 @@ const Signin = ({ navigation }) => {
           </Button>
 
           <Center>
-            <Text style={styles.regText}>Don't have an account ?</Text>
+            <Text style={styles.regText}>Don't have an account?</Text>
             <Text
               onPress={() => navigation.navigate(SIGN_UP)}
               style={styles.signupbtn}

@@ -1,6 +1,6 @@
-//user
+//User
 export const SET_USER = "SET_USER";
-export const FETCH_USERS="FETCH_USERS";
+export const FETCH_USERS = "FETCH_USERS";
 
-//Room 
-export const NEW_ROOM ="NEW_ROOM";
+//Room
+export const NEW_ROOM = "NEW_ROOM";

@@ -1,11 +1,11 @@
-import { Center, List, Spinner } from "native-base";
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
+import { Center, List, Spinner } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 import { CHAT_FORM } from "../Navigation/types";
 
-//components
+//Components
 import ChatItem from "./ChatItem";
 
 const ChatList = ({ navigation }) => {
@@ -18,8 +18,7 @@ const ChatList = ({ navigation }) => {
     .filter((room) => room.usersId.length === 2)
     .map((_room) => _users.find((_id) => _id.id === _room.usersId[0]));
 
-
-    console.log(rooms)
+  console.log(rooms);
   // console.log(_users);
   // console.log(chatList);
 
@@ -29,14 +28,12 @@ const ChatList = ({ navigation }) => {
 
   return (
     <SafeAreaView>
- 
-    <Center style={styles.center}>
-    <View style={styles.card}>
-      {/* <Button title="new chat" onPress={() => navigation.navigate(CHAT_FORM)} /> */}
-      <Text>{newList}</Text>
-    </View>
-    </Center>
-
+      <Center style={styles.center}>
+        <View style={styles.card}>
+          {/* <Button title="new chat" onPress={() => navigation.navigate(CHAT_FORM)} /> */}
+          <Text>{newList}</Text>
+        </View>
+      </Center>
     </SafeAreaView>
   );
 };
@@ -51,11 +48,9 @@ const styles = StyleSheet.create({
     // backgroundColor: "#2a9d8f",
     padding: 20,
   },
-  center:{
-
+  center: {
     justifyContent: "center",
     alignItems: "center",
-
-  }
+  },
 });
 export default ChatList;

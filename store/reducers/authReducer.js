@@ -2,27 +2,26 @@ import { FETCH_USERS, SET_USER } from "../actions/types";
 
 const initialState = {
   user: null,
-  allUsers:[],
-  loading:true,
-
+  allUsers: [],
+  loading: true,
 };
 
 const authReducer = (state = initialState, action) => {
-  
   switch (action.type) {
     case SET_USER:
-      console.log("RED SET USER")
+      console.log("RED SET USER"); //Remove console log
       return {
         ...state,
         user: action.payload,
-        loading:false,
+        loading: false,
       };
-      case FETCH_USERS:
-        console.log("REDDDD FETCH")
+
+    case FETCH_USERS:
+      console.log("REDDDD FETCH"); //Remove console log
       return {
         ...state,
         allUsers: action.payload,
-        loading:false,
+        loading: false,
       };
 
     default:

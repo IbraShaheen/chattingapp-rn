@@ -5,8 +5,10 @@ import { Center, Button } from "native-base";
 import { useForm, Controller } from "react-hook-form";
 import { Text, View, TextInput, StyleSheet } from "react-native";
 
-// Components
+//Navigation
 import { SIGN_IN } from "../Navigation/types";
+
+//Actions
 import { signup } from "../../store/actions/authActions";
 
 const Signup = ({ navigation }) => {
@@ -17,16 +19,19 @@ const Signup = ({ navigation }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => dispatch(signup(data, navigation));
   return (
     <Center>
       <View>
+        {/*Remove inline styling */}
         <View style={{ marginTop: 150 }}>
           <Controller
             control={control}
             rules={{
               required: true,
             }}
+            //Value is unused
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 id="fullname"
@@ -41,8 +46,9 @@ const Signup = ({ navigation }) => {
             name="fullname"
             defaultValue=""
           />
+
           {errors.fullname && (
-            <Text style={styles.redTxt}>fullname is required</Text>
+            <Text style={styles.redTxt}>Fullname is required</Text>
           )}
 
           <Controller
@@ -50,6 +56,7 @@ const Signup = ({ navigation }) => {
             rules={{
               required: true,
             }}
+            //Value is unused
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 id="username"
@@ -64,8 +71,9 @@ const Signup = ({ navigation }) => {
             name="username"
             defaultValue=""
           />
+
           {errors.username && (
-            <Text style={styles.redTxt}>username is required</Text>
+            <Text style={styles.redTxt}>Username is required</Text>
           )}
 
           <Controller
@@ -77,6 +85,7 @@ const Signup = ({ navigation }) => {
                 message: "Not an email format",
               },
             }}
+            //Value is unused
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 id="email"
@@ -91,6 +100,7 @@ const Signup = ({ navigation }) => {
             name="email"
             defaultValue=""
           />
+
           {errors.email && <Text style={styles.redTxt}>email is required</Text>}
           {errors.email && (
             <Text style={styles.redTxt} role="alert">
@@ -103,6 +113,7 @@ const Signup = ({ navigation }) => {
             rules={{
               required: true,
             }}
+            //Value is unused
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 id="password"
@@ -117,6 +128,7 @@ const Signup = ({ navigation }) => {
             name="password"
             defaultValue=""
           />
+
           {errors.password && (
             <Text style={styles.redTxt}>password is required</Text>
           )}
@@ -130,7 +142,7 @@ const Signup = ({ navigation }) => {
           </Button>
 
           <Center>
-            <Text style={styles.regText}>Already have an account ?</Text>
+            <Text style={styles.regText}>Already have an account?</Text>
             <Text
               onPress={() => navigation.navigate(SIGN_IN)}
               style={styles.signinbtn}

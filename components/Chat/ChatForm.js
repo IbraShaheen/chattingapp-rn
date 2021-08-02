@@ -1,10 +1,13 @@
-import { Button } from "native-base";
 import React, { useState } from "react";
 import { StyleSheet, View, Picker } from "react-native";
-
 import { useDispatch, useSelector } from "react-redux";
-import { createRoom } from "../../store/actions/roomActions";
+import { Button } from "native-base";
+
+//Navigation
 import { CHAT_LIST } from "../Navigation/types";
+
+//Actions
+import { createRoom } from "../../store/actions/roomActions";
 
 const ChatForm = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -15,14 +18,15 @@ const ChatForm = ({ navigation }) => {
   const [room, setRoom] = useState({
     users: [],
   });
-  console.log(room);
+
+  console.log(room); //Remove console log
 
   return (
     <View style={styles.container}>
       <Picker
         itemStyle={{ color: "white" }}
         selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
+        style={{ height: 50, width: 150 }} //Remove inline styling
         onValueChange={(itemValue, itemIndex) =>
           setRoom({ ...room, users: [itemValue] })
         }
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
   },
 });
 
+//Remove unused code
 //just in case
 {
   /* <View style={{ width: '100%', alignItems: 'center' }}>
