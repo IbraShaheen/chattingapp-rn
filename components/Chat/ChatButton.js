@@ -1,6 +1,6 @@
 import React from "react";
 import { Center, Button } from "native-base";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 
@@ -12,15 +12,8 @@ const CartButton = () => {
   return (
     <View>
       <Center>
-      {/* <Icon
-        raised
-        name="chat"
-        type="materialCommunityIcons"
-        color="#f50"
-        // size="1"
-        onPress={() => navigation.navigate(CHAT_FORM)}
-      /> */}
-      <Button onPress={() => navigation.navigate(CHAT_FORM)}> ➕ New chat</Button>
+      <Button style={styles.btnG}
+       onPress={() => navigation.navigate(CHAT_FORM)}> ➕ New chat</Button>
 
       </Center>
     </View>
@@ -28,3 +21,17 @@ const CartButton = () => {
 };
 
 export default CartButton;
+
+const styles = StyleSheet.create({
+
+  btnG:{
+    color:"black",
+    fontWeight: "bold",
+    fontSize:30,
+    marginRight:15,
+    backgroundColor:"gray",
+    borderStyle:"solid",
+    borderColor:"white",
+    borderWidth:1
+  }
+});

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import EmojiSelector, { Categories } from "react-native-emoji-selector";
-import { Button, Input } from "native-base";
+import { Button, Input, ScrollView } from "native-base";
 import { Icon } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
 import { createMessage, fetchMessages } from "../../store/actions/msgActions";
+import { textShadow } from "styled-system";
 
 const Room = ({ route }) => {
   // console.log(route.params._room.id)
@@ -27,7 +28,7 @@ useEffect(() => {
   const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    setSocket(io("http://192.168.1.179:8080"));
+    setSocket(io("http://192.168.8.133:8080"));
 
   }, []);
 
@@ -68,27 +69,49 @@ useEffect(() => {
   return (
     <SafeAreaView style={styles.room}>
       <View>
-        <Text>{_messages?_messages.map((message)=> <Text>{message.text}</Text>):""}</Text>
-        {/* <EmojiSelector onEmojiSelected={emoji => console.log(emoji)} /> */}
-        <View>
+        <ScrollView style={{width:400}}>
+
+
+
+          {/* <View style={{ backgroundColor:"#ced4da", width:"90%"}}> */}
+
+{_messages
+            ? _messages.map((message) => (
+                <>
+                  {user.id === message.senderId ? (
+                    <>
+                      <Text style={styles.sender}>{message.text}</Text>
+                    </>
+                  ) : (
+                    <Text style={styles.recever}>{message.text} </Text>
+                  )}
+                </>
+              ))
+            : <Text>""</Text> }
+
+
+ {/* </View> */}
+ </ScrollView>
+       <Text style={{color:"green" }}>{"ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ"}</Text>
           <Input
+          style={{marginLeft:80, width:250 }}
             autoCapitalize={false}
             onChangeText={(state)=>setState(state)}
             w="80%"
             mx={4}
             placeholder="type a message"
           />
-          <TouchableOpacity>
+          <TouchableOpacity style={{ marginLeft:165, marginTop:1}}>
             <Icon
               raised
               name="send"
               type="Ionicons"
-              color="#f50"
+              color="darkblue"
               // size="1"
               onPress={handleSubmit}
             />
           </TouchableOpacity>
-        </View>
+
       </View>
     </SafeAreaView>
   );
@@ -105,4 +128,28 @@ const styles = StyleSheet.create({
     backgroundColor: "#edf2f4",
     padding: 20,
   },
+  sender:{
+    fontSize:18,
+      color:"black",
+      backgroundColor:"#0f57078e",
+      width:180,
+      marginLeft:10,
+      padding:15,
+      marginVertical:10,
+      borderRadius:12,
+      textShadowColor:"rgba(0, 60, 255, 0.849)",
+
+  },
+  recever:{
+    fontSize:18,
+    color:"white",
+    backgroundColor:"hsla(180, 70%, 4%, 0.425)",
+    width:180,
+    marginLeft:190,
+    padding:15,
+    marginVertical:10,
+    borderRadius:12,
+    textShadowColor:"rgba(0, 60, 255, 0.849)",
+  }
+
 });

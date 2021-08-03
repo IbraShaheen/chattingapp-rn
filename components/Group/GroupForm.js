@@ -32,7 +32,7 @@ const GroupForm = ({ navigation }) => {
   console.log(room);
   return (
     <SafeAreaView>
-    <View style={{ margin: 20, backgroundColor: "#fdf0d5", borderRadius:15,
+    <View style={{ margin: 20, backgroundColor: "#edf6f9", borderRadius:15,
   padding:15, marginBottom:80 }}>
       <Center>
       <View style={{ height: 40 }} />
