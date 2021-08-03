@@ -9,8 +9,11 @@ export const CHAT_LIST="CHAT_LIST";
 export const GROUPS = "GROUPS";
 export const GROUP_FORM="GROUP_FORM"
 export const GROUP_LIST="GROUP_LIST";
-export const PROFILE = "PROFILE";
-export const ROOM = "ROOM";
-export const NEW_MSG = "NEW_MSG";
 
+export const ROOM = "ROOM";
+export const GROUP = "GROUP"
+export const NEW_MSG = "NEW_MSG";
+//profile
+export const PORFILE_FORM="PORFILE_FORM";
+export const PROFILE = "PROFILE";
 

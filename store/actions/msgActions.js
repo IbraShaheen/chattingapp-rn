@@ -1,21 +1,23 @@
-// import instance from "./instance";
-// import { NEW_MSG } from "../../components/Navigation/types";
+import instance from "./instance";
+import { CREATE_MESSAGE, FETCH_MESSAGES } from "./types";
 
-// export const msgCreate = (newMsg) => {
-//   return async (dispatch) => {
-//     try {
-//         // if(user)
+export const createMessage = (message) => {
+  return {
+    type: CREATE_MESSAGE,
+    payload: message,
+  };
+};
+export const fetchMessages = () => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.get("/messages");
 
-//       const res = await instance.post("/newmsg", newMsg);
-
-//       dispatch({
-//         type: NEW_MSG,
-//         payload: {
-//           msg: res.data,
-//         },
-//       });
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
-// };
+      dispatch({
+        type: FETCH_MESSAGES,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
