@@ -1,18 +1,23 @@
 import { Center } from 'native-base';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet,Button, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRooms } from '../../store/actions/roomActions';
 import { GROUP_FORM } from '../Navigation/types';
 //components
 import GroupItem from './GroupItem';
 
 const GroupList = ({navigation}) => {
-   
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchRooms());
+  }, []);
+  const user = useSelector((state) => state.user.user);
     const rooms = useSelector((state) => state.rooms.rooms);
     const groupList = rooms
-    .filter((room) => room.usersId.length > 2)
-    .map((_room) => <GroupItem _room={_room} key={_room.id} />);
+    .filter((room) => room.usersId.length > 2).filter((users) => users.usersId.includes(user.id))
+    .map((_room) => <GroupItem _room={_room} navigation={navigation} key={_room.id}  />);
 
     console.log(groupList)
 

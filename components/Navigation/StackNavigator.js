@@ -11,7 +11,7 @@ import ChatForm from "../Chat/ChatForm";
 import ChatList from "../Chat/ChatList";
 import GroupForm from "../Group/GroupForm";
 import GroupList from "../Group/GroupList";
-import ChatButton from "../Chat/ChatButton"
+import ChatButton from "../Chat/ChatButton";
 
 import {
   HOME,
@@ -23,9 +23,15 @@ import {
   GROUP_FORM,
   GROUP_LIST,
   ROOM,
+  GROUP,
+  PROFILE,
+  PORFILE_FORM,
 } from "./types";
 import Room from "../Room/Room";
 import GroupButton from "../Group/GroupButton";
+import Group from "../Room/Group";
+import Profile from "../Profile/Profile";
+import ProfileForm from "../Profile/ProfileForm";
 
 const StackNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -53,9 +59,7 @@ const StackNavigator = () => {
       <Screen
         name={CHAT_LIST}
         component={ChatList}
-        options={{ title: "Chats",
-        headerRight:() => (<ChatButton/>) }}
-        
+        options={{ title: "Chats", headerRight: () => <ChatButton /> }}
       />
       <Screen
         name={CHAT_FORM}
@@ -70,13 +74,33 @@ const StackNavigator = () => {
       <Screen
         name={GROUP_LIST}
         component={GroupList}
-        options={{ title: "Groups",
-        headerRight:() => (<GroupButton/>) }}
+        options={{ title: "Groups", headerRight: () => <GroupButton /> }}
       />
 
-    <Screen name={ROOM} component={Room} options={({route})=>{
-            return {headerTitle : route.params._room.username}}} /> 
-
+      <Screen
+        name={ROOM}
+        component={Room}
+        options={({ route }) => {
+          return { headerTitle: route.params._room.username };
+        }}
+      />
+      <Screen
+        name={GROUP}
+        component={Group}
+        options={({ route }) => {
+          return { headerTitle: route.params.certainRoom.name };
+        }}
+      />
+        <Screen
+        name={PROFILE}
+        component={Profile}
+        options={{title: "My Profile"}}
+      />
+       <Screen
+        name={PORFILE_FORM}
+        component={ProfileForm}
+        options={{ headerShown: false }}
+      />
     </Navigator>
   );
 };

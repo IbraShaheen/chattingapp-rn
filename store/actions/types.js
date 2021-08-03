@@ -5,3 +5,9 @@ export const FETCH_USERS="FETCH_USERS";
 //Room 
 export const NEW_ROOM ="NEW_ROOM";
 export const FETCH_ROOMS = "FETCH_ROOMS";
+//message
+export const CREATE_MESSAGE="CREATE_MESSAGE";
+export const FETCH_MESSAGES="FETCH_MESSAGES";
+//profile
+export const UPDATE_PROFILE ="UPDATE_PROFILE";
+export const FETCH_PROFILE="FETCH_PROFILE";

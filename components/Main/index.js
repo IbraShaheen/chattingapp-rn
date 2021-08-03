@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ImageBackground, StyleSheet } from "react-native";
 import { Center, Button } from "native-base";
-import { CHAT_LIST, GROUP_FORM, GROUP_LIST } from "../Navigation/types";
+import { CHAT_LIST, GROUP_FORM, GROUP_LIST, PROFILE } from "../Navigation/types";
 import { Icon } from "react-native-elements/dist/icons/Icon";
 
 const Main = ({ navigation }) => {
@@ -38,7 +38,7 @@ const Main = ({ navigation }) => {
 
             <Button
               type="Submit"
-              // onPress={() => navigation.navigate(CHAT_LIST)}
+              onPress={() => navigation.navigate(PROFILE)}
               style={styles.chatsbtn}
             >
               <Icon name="person" type="Fontisto" color="black" />
