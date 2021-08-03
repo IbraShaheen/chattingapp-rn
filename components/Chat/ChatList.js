@@ -1,4 +1,4 @@
-import { Center, Spinner } from "native-base";
+import { Center, List, ScrollView, Spinner } from "native-base";
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 //components
 import ChatItem from "./ChatItem";
 import { fetchRooms } from "../../store/actions/roomActions";
+
+
 
 const ChatList = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -37,11 +39,13 @@ const ChatList = ({ navigation }) => {
 
   return (
     <SafeAreaView>
+      <ScrollView>
       <Center style={styles.center}>
         <View style={styles.card}>
           <Text>{newList}</Text>
         </View>
       </Center>
+      </ScrollView>
     </SafeAreaView>
   );
 };

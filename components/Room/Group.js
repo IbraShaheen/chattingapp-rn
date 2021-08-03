@@ -1,4 +1,4 @@
-import {  Input } from 'native-base'
+import {  Input, ScrollView } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -23,7 +23,7 @@ const Group = ({route}) => {
     const user = useSelector((state) => state.user.user);
 
     useEffect(() => {
-        setSocket(io("http://192.168.1.179:8080"));
+        setSocket(io("http://192.168.8.133:8080"));
     
       }, []);
 
@@ -57,6 +57,7 @@ const Group = ({route}) => {
     return (
         <SafeAreaView style={styles.room}>
         <View>
+        <ScrollView>
             <Text>{_messages?_messages.map((message)=> <Text>{message.text}</Text>):""}</Text>
             <View>
           <Input
@@ -78,6 +79,7 @@ const Group = ({route}) => {
             />
           </TouchableOpacity>
         </View>
+        </ScrollView>
         </View>
         </SafeAreaView>
     )

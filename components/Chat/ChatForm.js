@@ -1,6 +1,6 @@
 import { Button } from "native-base";
 import React, { useState } from "react";
-import { StyleSheet, View, Picker } from "react-native";
+import { StyleSheet, View, Picker, Text } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { createRoom } from "../../store/actions/roomActions";
@@ -18,7 +18,10 @@ const ChatForm = ({ navigation }) => {
   console.log(room);
 
   return (
+    <View>
+      
     <View style={styles.container}>
+    <Text style={styles.txt} > Start a Chat</Text>
       <Picker
         itemStyle={{ color: "white" }}
         selectedValue={selectedValue}
@@ -41,10 +44,11 @@ const ChatForm = ({ navigation }) => {
         onPress={() =>
           dispatch(createRoom(room)) && navigation.navigate(CHAT_LIST)
         }
-        style={styles.signin}
+        style={styles.btnbtn}
       >
         start a chat
       </Button>
+    </View>
     </View>
   );
 };
@@ -56,26 +60,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
     alignItems: "center",
+    marginTop:240,
   },
+  btnbtn:{
+    width:120,
+    height:40
+  },
+  txt:{
+      color:"white",
+      fontSize:28,
+      fontWeight:"bold"
+
+  }
 });
-
-//just in case
-{
-  /* <View style={{ width: '100%', alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, paddingBottom: 20 }}>Demos</Text>
-      </View>
-      {/* <Text style={{ fontSize: 20, paddingBottom: 10 }}>Select Demo</Text>
-      <SelectBox
-        label="Select single"
-        options={K_OPTIONS}
-        value={selectedTeam}
-        onChange={onChange()}
-        hideInputFilter={false}
-      /> */
-}
-
-//   const onChange=()=> {
-//     return (val) => setSelectedTeam(val)
-//   }
-
-// const [selectedTeam, setSelectedTeam] = useState({})

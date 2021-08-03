@@ -2,35 +2,32 @@ import { Center, FlatList } from "native-base";
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image } from "react-native-svg";
-import { border, margin } from "styled-system";
 import { Icon } from "react-native-elements/dist/icons/Icon";
 import { GROUP } from "../Navigation/types";
 import { useSelector } from "react-redux";
 
 const GroupItem = ({ _room , navigation }) => {
   const rooms = useSelector((state)=>state.rooms.rooms)
-  // console.log(_room)
+
   const certainRoom = rooms.find((room) => room.roomId === _room.roomId);
 console.log(certainRoom)
   return (
     <SafeAreaView>
       <ScrollView>
-      {/* <FlatList> */}
+
       <Center>
         <TouchableOpacity onPress={()=> navigation.navigate(GROUP,{certainRoom:certainRoom})} >
 
         <View style={styles.card}>
-          {/* <Image style={{width:10,height:10}} source={{uri:"https://images-ext-2.discordapp.net/external/AI57JsmK1EEPi8KUukWW6xsP-5cbehDxFOiatyDTFpE/https/pngimage.net/wp-content/uploads/2018/06/telemarketing-icon-png-4.png"}} /> */}
- 
-          <Icon name="groups" type="FontAwesome" color="black" />
 
-          <Text>{_room.name}</Text>
+          <Icon name="groups" type="FontAwesome" color="darkcyan" />
+
+          <Text style={styles.uName}>{_room.name}</Text>
         </View>
         </TouchableOpacity>
         {/* <Text>{"\n"}</Text> */}
       </Center>
-      {/* </FlatList> */}
+
         </ScrollView>
     </SafeAreaView>
   );
@@ -45,21 +42,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     flexWrap: "wrap",
-    width: 200,
-    backgroundColor: "#8ecae6",
+    width: 300,
+    backgroundColor: "rgb(237, 242, 251)",
     padding: 20,
-    borderWidth: 2,
+    borderWidth: 1,
     borderStyle: "solid",
-    borderColor: "black",
-    borderRadius: 17,
-    // margin:60
+    borderColor: "cyan",
+    height: 65,
     marginRight: 10,
-    marginLeft: 75,
-    marginVertical: 4,
-    // marginBottom:3,
-    // marginTop:3,
-    fontWeight:"bold"
+    marginLeft: 35,
+    marginVertical: 6,
+    fontWeight: "bold",
+    fontSize:25
   },
+  uName:{
+    fontWeight: "bold",
+    fontSize:18,
+    marginLeft: 45,
+      
+  }
 });
 
 
