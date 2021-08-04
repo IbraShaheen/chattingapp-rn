@@ -84,7 +84,8 @@ subTxt1:{
       marginBottom:55,
       width:380,
       padding:15,
-      borderRadius:10
+      borderRadius:10,
+      
       },
 
 })

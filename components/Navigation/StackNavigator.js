@@ -41,12 +41,12 @@ const StackNavigator = () => {
       initialRouteName={HOME}
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#3f37c9",
+          backgroundColor: "#335c67",
         },
         headerTintColor: "white",
 
         cardStyle: {
-          backgroundColor: "#023047",
+          backgroundColor: "#353656",
         },
       }}
     >

@@ -28,8 +28,9 @@ const ChatList = ({ navigation }) => {
   const chatList = rooms
     .filter((room) => room.usersId.length === 2)
     .filter((users) => users.usersId.includes(user.id))
-    .map((_room) => otherUsers.find((_id) => _room.usersId.includes(_id.id)));
-
+    .map((_room) => otherUsers.find((_id) => _room.usersId.includes(_id.id)))
+                               
+    
   const uniqueChatList = [...new Set(chatList)];
 
   console.log(rooms);
