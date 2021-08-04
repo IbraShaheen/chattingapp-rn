@@ -1,7 +1,7 @@
 //Libraries
 import decode from "jwt-decode";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+// import { AsyncStorage } from 'react-native';
 
 //Components
 import instance from "./instance";

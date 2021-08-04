@@ -34,6 +34,7 @@ useEffect(() => {
 
   const handleSubmit = () => {
     setText(state)
+    setState("")
   };
 
   useEffect(() => {
@@ -52,8 +53,11 @@ useEffect(() => {
         senderId: user.id,
 
         image: "",
-        text: text,
         roomId: certainRoom.roomId,
+        // text: text,
+        text: `   ${new Date(Date.now())
+          .toString()
+          .substr(0, 21)}  : \n\n\n ${text}`,
       });
     }
   }, [text]);
@@ -61,7 +65,7 @@ useEffect(() => {
   const certainRoom = rooms.find(
     (room) =>
       room.usersId.includes(user.id) &&
-      room.usersId.includes(route.params._room.id)
+      room.usersId.includes(route.params._room.id)&&room.usersId.length === 2
   );
 //   console.log(certainRoom)
   const _messages = messages.filter((msg) => msg.roomId === certainRoom.roomId);
@@ -92,7 +96,8 @@ useEffect(() => {
 
  {/* </View> */}
  </ScrollView>
-       <Text style={{color:"green" }}>{"ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ"}</Text>
+  <View >
+       <Text style={{color:"black" }}>{"ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ"}</Text>
           <Input
           style={{marginLeft:80, width:250 }}
             autoCapitalize={false}
@@ -100,6 +105,7 @@ useEffect(() => {
             w="80%"
             mx={4}
             placeholder="type a message"
+            value={state}
           />
           <TouchableOpacity style={{ marginLeft:165, marginTop:1}}>
             <Icon
@@ -111,7 +117,7 @@ useEffect(() => {
               onPress={handleSubmit}
             />
           </TouchableOpacity>
-
+          </View>
       </View>
     </SafeAreaView>
   );

@@ -7,7 +7,7 @@ import { GROUP } from "../Navigation/types";
 import { useSelector } from "react-redux";
 
 const GroupItem = ({ _room , navigation }) => {
-  const rooms = useSelector((state)=>state.rooms.rooms)
+  const rooms = useSelector((state)=> state.rooms.rooms)
 
   const certainRoom = rooms.find((room) => room.roomId === _room.roomId);
 console.log(certainRoom)

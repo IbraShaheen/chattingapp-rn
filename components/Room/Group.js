@@ -29,6 +29,7 @@ const Group = ({route}) => {
 
       const handleSubmit = () => {
         setText(`${user.username} : ${state}`);
+        setState("")
       };
     
  useEffect(() => {
@@ -47,41 +48,66 @@ const Group = ({route}) => {
         senderId: user.id,
 
         image: "",
-        text: text,
         roomId: route.params.certainRoom.roomId,
+        // text: text,
+        text: ` ${user.username} |  ${new Date(Date.now())
+          .toString()
+          .substr(0, 21)}  : \n\n\n ${text}`,
       });
     }
   }, [text]);
   const _messages = messages.filter((msg) => msg.roomId === route.params.certainRoom.roomId);
 
     return (
-        <SafeAreaView style={styles.room}>
-        <View>
-        <ScrollView>
-            <Text>{_messages?_messages.map((message)=> <Text>{message.text}</Text>):""}</Text>
-            <View>
+      <SafeAreaView style={styles.room}>
+      <View>
+        <ScrollView style={{width:400}}>
+
+
+
+          {/* <View style={{ backgroundColor:"#ced4da", width:"90%"}}> */}
+
+{_messages
+            ? _messages.map((message) => (
+                <>
+                  {user.id === message.senderId ? (
+                    <>
+                      <Text style={styles.sender}>{message.text}</Text>
+                    </>
+                  ) : (
+                    <Text style={styles.recever}>{message.text} </Text>
+                  )}
+                </>
+              ))
+            : <Text>""</Text> }
+
+
+ {/* </View> */}
+ </ScrollView>
+ <View>
+       <Text style={{color:"black" }}>{"ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ"}</Text>
           <Input
+          style={{marginLeft:80, width:250 }}
             autoCapitalize={false}
-            
             onChangeText={(state)=>setState(state)}
             w="80%"
             mx={4}
             placeholder="type a message"
+            value={state}
           />
-          <TouchableOpacity>
+          <TouchableOpacity style={{ marginLeft:165, marginTop:1}}>
             <Icon
               raised
               name="send"
               type="Ionicons"
-              color="#f50"
+              color="darkblue"
               // size="1"
               onPress={handleSubmit}
             />
           </TouchableOpacity>
-        </View>
-        </ScrollView>
-        </View>
-        </SafeAreaView>
+          </View>
+      </View>
+    </SafeAreaView>
     )
 }
 
@@ -96,4 +122,68 @@ const styles = StyleSheet.create({
         backgroundColor: "#edf2f4",
         padding: 20,
       },
+      sender:{
+        fontSize:18,
+          color:"black",
+          backgroundColor:"#0f57078e",
+          width:180,
+          marginLeft:10,
+          padding:15,
+          marginVertical:10,
+          borderRadius:12,
+          textShadowColor:"rgba(0, 60, 255, 0.849)",
+    
+      },
+      recever:{
+        fontSize:18,
+        color:"white",
+        backgroundColor:"hsla(180, 70%, 4%, 0.425)",
+        width:180,
+        marginLeft:190,
+        padding:15,
+        marginVertical:10,
+        borderRadius:12,
+        textShadowColor:"rgba(0, 60, 255, 0.849)",
+      }
 })
+
+
+
+
+
+
+
+
+
+
+/*
+
+ <SafeAreaView style={styles.room}>
+<View>
+<ScrollView>
+    <Text>{_messages?_messages.map((message)=> <Text>{message.text}</Text>):""}</Text>
+    <View>
+  <Input
+    autoCapitalize={false}
+    
+    onChangeText={(state)=>setState(state)}
+    w="80%"
+    mx={4}
+    placeholder="type a message"
+  />
+  <TouchableOpacity>
+    <Icon
+      raised
+      name="send"
+      type="Ionicons"
+      color="#f50"
+      // size="1"
+      onPress={handleSubmit}
+    />
+  </TouchableOpacity>
+</View>
+</ScrollView>
+</View>
+</SafeAreaView> 
+
+*/

@@ -14,7 +14,7 @@ const Home = ({ navigation }) => {
         <ImageBackground
           style={styles.image}
           source={{
-            uri: "https://www.kolpaper.com/wp-content/uploads/2021/02/whatsapp-wallpaper-12.png",
+            uri:"https://i.pinimg.com/originals/0f/a8/d5/0fa8d5f32c5101a85351665b753ee7f0.jpg"
           }}
         >
           <Text style={styles.mainText}>Welcome To The Light Speed Chat</Text>
