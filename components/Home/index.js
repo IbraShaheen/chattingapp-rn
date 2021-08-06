@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Center, Button } from "native-base";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 
-//Components
+//Components & functions
 import { SIGN_IN, SIGN_UP } from "../Navigation/types";
 
 const Home = ({ navigation }) => {
@@ -14,24 +14,27 @@ const Home = ({ navigation }) => {
         <ImageBackground
           style={styles.image}
           source={{
-            uri:"https://i.pinimg.com/originals/0f/a8/d5/0fa8d5f32c5101a85351665b753ee7f0.jpg"
+            uri: "https://i.pinimg.com/originals/99/56/0a/99560aa62aa2bc656c1189917f64b044.jpg",
           }}
         >
           <Text style={styles.mainText}>Welcome To The Light Speed Chat</Text>
 
           <StatusBar style="auto" />
-          <Button
-            onPress={() => navigation.navigate(SIGN_UP)}
-            style={styles.signup}
-          >
-            Signup
-          </Button>
-          <Text style={styles.txt}> or </Text>
+
           <Button
             onPress={() => navigation.navigate(SIGN_IN)}
             style={styles.signin}
           >
             Signin
+          </Button>
+
+          <Text style={styles.txt}>Already have an account?</Text>
+
+          <Button
+            onPress={() => navigation.navigate(SIGN_UP)}
+            style={styles.signup}
+          >
+            Signup
           </Button>
         </ImageBackground>
       </Center>
@@ -60,25 +63,25 @@ const styles = StyleSheet.create({
     letterSpacing: 3,
   },
   signin: {
-    width: 100,
-    marginLeft: 200,
-    marginTop: 50,
-    backgroundColor: "#3f37c9",
+    width: 120,
+    marginHorizontal:"auto",
+    marginTop: 120,
+    backgroundColor: "darkcyan",
     fontWeight: "bold",
   },
   signup: {
-    width: 100,
-    marginLeft: 200,
-    marginTop: 100,
-    backgroundColor: "#3f37c9",
+    width: 120,
+    marginHorizontal:"auto",
+    marginTop: 20,
+    backgroundColor: "darkcyan",
     fontWeight: "bold",
   },
   txt: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 35,
+    fontSize: 18,
     textAlign: "center",
-    marginTop: 50,
+    marginTop: 40,
   },
 });
 

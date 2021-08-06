@@ -2,7 +2,6 @@ import { CREATE_MESSAGE, FETCH_MESSAGES } from "../actions/types";
 
 const initialState = {
   messages: [],
-
   loading: true,
 };
 

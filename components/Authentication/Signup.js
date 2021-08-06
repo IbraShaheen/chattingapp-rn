@@ -5,7 +5,7 @@ import { Center, Button } from "native-base";
 import { useForm, Controller } from "react-hook-form";
 import { Text, View, TextInput, StyleSheet } from "react-native";
 
-// Components
+//Components & functions
 import { SIGN_IN } from "../Navigation/types";
 import { signup } from "../../store/actions/authActions";
 
@@ -27,7 +27,7 @@ const Signup = ({ navigation }) => {
             rules={{
               required: true,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <TextInput
                 id="fullname"
                 style={styles.input}
@@ -50,7 +50,7 @@ const Signup = ({ navigation }) => {
             rules={{
               required: true,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <TextInput
                 id="username"
                 style={styles.input}
@@ -77,7 +77,7 @@ const Signup = ({ navigation }) => {
                 message: "Not an email format",
               },
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <TextInput
                 id="email"
                 style={styles.input}
@@ -103,7 +103,7 @@ const Signup = ({ navigation }) => {
             rules={{
               required: true,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <TextInput
                 id="password"
                 style={styles.input}
@@ -165,12 +165,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 17,
     textDecorationLine: "underline",
-    textDecorationColor: "#dc2f02",
+    textDecorationColor: "darkcyan",
     color: "white",
   },
   regText: {
     width: 300,
-    marginTop: 25,
+    marginTop: 50,
     textAlign: "center",
     color: "white",
     fontSize: 17,
@@ -180,11 +180,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   inbtn: {
-    width: 100,
-    marginLeft: 100,
-    marginTop: 50,
-    backgroundColor: "#3f37c9",
+    width: 120,
+    marginHorizontal:"auto",
+    marginTop: 55,
+    backgroundColor: "darkcyan",
     fontWeight: "bold",
   },
-  redTxt: { color: "red" },
+  redTxt: { color: "darkorange" },
 });

@@ -1,17 +1,14 @@
+//Libraries
 import React from "react";
-import { Center} from "native-base";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { Center } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Icon } from "react-native-elements/dist/icons/Icon";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+
+//Components & functions
 import { ROOM } from "../Navigation/types";
 
 const ChatItem = ({ _room, navigation }) => {
-  console.log(_room);
   return (
     <SafeAreaView>
       <Center>
@@ -19,13 +16,11 @@ const ChatItem = ({ _room, navigation }) => {
           onPress={() => navigation.navigate(ROOM, { _room: _room })}
         >
           <View style={styles.card}>
-          {/* style={{backgroundColor:"red" }} */}
-            <Icon   name="v-card" type="entypo" color="darkcyan" />
+            <Icon name="v-card" type="entypo" color="darkcyan" />
 
-            <Text style={styles.uName} > {_room.username}</Text>
+            <Text style={styles.uName}> {_room.username}</Text>
           </View>
         </TouchableOpacity>
-        {/* <Text>{"\n"}</Text> */}
       </Center>
     </SafeAreaView>
   );
@@ -51,12 +46,11 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     marginVertical: 6,
     fontWeight: "bold",
-    fontSize:25
+    fontSize: 25,
   },
-  uName:{
+  uName: {
     fontWeight: "bold",
-    fontSize:18,
+    fontSize: 18,
     marginLeft: 45,
-      
-  }
+  },
 });

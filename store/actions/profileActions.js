@@ -1,3 +1,4 @@
+//Components
 import instance from "./instance";
 import { FETCH_PROFILE, UPDATE_PROFILE } from "./types";
 
