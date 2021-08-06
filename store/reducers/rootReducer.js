@@ -1,14 +1,17 @@
+//Libraries
 import { combineReducers } from "redux";
+
+// Reducers
+import roomReducer from "./roomReducer";
 import authReducer from "./authReducer";
 import messageReducer from "./msgReducer";
 import profileReducer from "./profileReducer";
-import roomReducer from "./roomReducer";
 
 const rootReducer = combineReducers({
   user: authReducer,
-  rooms : roomReducer,
+  rooms: roomReducer,
   messages: messageReducer,
-  profiles: profileReducer
+  profiles: profileReducer,
 });
 
 export default rootReducer;

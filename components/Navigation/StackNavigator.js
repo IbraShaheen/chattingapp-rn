@@ -2,16 +2,21 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-//Components
+//Components & functions
 import Home from "../Home";
-import Signup from "../Authentication/Signup";
-import Signin from "../Authentication/Signin";
 import Main from "../Main";
+import Room from "../Room/Room";
+import Group from "../Room/Group";
 import ChatForm from "../Chat/ChatForm";
 import ChatList from "../Chat/ChatList";
+import Profile from "../Profile/Profile";
 import GroupForm from "../Group/GroupForm";
 import GroupList from "../Group/GroupList";
 import ChatButton from "../Chat/ChatButton";
+import Signup from "../Authentication/Signup";
+import Signin from "../Authentication/Signin";
+import GroupButton from "../Group/GroupButton";
+import ProfileForm from "../Profile/ProfileForm";
 
 import {
   HOME,
@@ -27,11 +32,7 @@ import {
   PROFILE,
   PORFILE_FORM,
 } from "./types";
-import Room from "../Room/Room";
-import GroupButton from "../Group/GroupButton";
-import Group from "../Room/Group";
-import Profile from "../Profile/Profile";
-import ProfileForm from "../Profile/ProfileForm";
+
 
 const StackNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -91,12 +92,12 @@ const StackNavigator = () => {
           return { headerTitle: route.params.certainRoom.name };
         }}
       />
-        <Screen
+      <Screen
         name={PROFILE}
         component={Profile}
-        options={{title: "My Profile"}}
+        options={{ title: "My Profile" }}
       />
-       <Screen
+      <Screen
         name={PORFILE_FORM}
         component={ProfileForm}
         options={{ headerShown: false }}

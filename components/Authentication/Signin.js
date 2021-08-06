@@ -1,16 +1,17 @@
 //Libraries
 import React from "react";
-import { Text, View, TextInput, StyleSheet } from "react-native";
-import { Button, Center } from "native-base";
 import { useDispatch } from "react-redux";
+import { Button, Center } from "native-base";
 import { useForm, Controller } from "react-hook-form";
+import { Text, View, TextInput, StyleSheet } from "react-native";
 
-//Components
+//Components & functions
 import { signin } from "../../store/actions/authActions";
 import { SIGN_UP } from "../Navigation/types";
 
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
+
   const {
     control,
     handleSubmit,
@@ -27,14 +28,14 @@ const Signin = ({ navigation }) => {
             rules={{
               required: true,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <TextInput
                 id="username"
                 style={styles.input}
                 onBlur={onBlur}
                 onChangeText={onChange}
                 placeholder="Username"
-                placeholderTextColor="#eee"
+                placeholderTextColor="white"
                 color="white"
               />
             )}
@@ -50,14 +51,14 @@ const Signin = ({ navigation }) => {
             rules={{
               required: true,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <TextInput
                 id="password"
                 style={styles.input}
                 onBlur={onBlur}
                 onChangeText={onChange}
                 placeholder="Password"
-                placeholderTextColor="#eee"
+                placeholderTextColor="white"
                 color="white"
               />
             )}
@@ -94,18 +95,10 @@ const Signin = ({ navigation }) => {
 export default Signin;
 
 const styles = StyleSheet.create({
-  btn: {
-    width: 300,
-    marginTop: 25,
-    textAlign: "center",
-    color: "white",
-    fontSize: 17,
-    textDecorationLine: "underline",
-    textDecorationColor: "#dc2f02",
-  },
+
   regText: {
     width: 300,
-    marginTop: 25,
+    marginTop: 50,
     textAlign: "center",
     color: "white",
     fontSize: 17,
@@ -126,15 +119,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 17,
     textDecorationLine: "underline",
-    textDecorationColor: "#dc2f02",
+    textDecorationColor: "darkcyan",
     color: "white",
   },
   inbtn: {
-    width: 100,
-    marginLeft: 100,
-    marginTop: 50,
-    backgroundColor: "#3f37c9",
+    width: 120,
+    marginHorizontal:"auto",
+    marginTop: 55,
+    backgroundColor: "darkcyan",
     fontWeight: "bold",
   },
-  redTxt: { color: "red" },
+  redTxt: { color: "darkorange" },
 });

@@ -1,39 +1,36 @@
-import { Center, List, ScrollView, Spinner } from "native-base";
+//Libraries
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
+import { Center, ScrollView, Spinner } from "native-base";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-//components
+//Components & functions
 import ChatItem from "./ChatItem";
 import { fetchRooms } from "../../store/actions/roomActions";
-
-
 
 const ChatList = ({ navigation }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRooms());
   }, []);
-  const _users = useSelector((state) => state.user.allUsers);
 
   const user = useSelector((state) => state.user.user);
-
+  const _users = useSelector((state) => state.user.allUsers);
   const otherUsers = _users.filter((_id) => _id.id !== user.id);
 
-  const loading = useSelector((state) => state.user.loading);
   const rooms = useSelector((state) => state.rooms.rooms);
+  const loading = useSelector((state) => state.user.loading);
+
   if (loading) return <Spinner />;
 
   const chatList = rooms
     .filter((room) => room.usersId.length === 2)
     .filter((users) => users.usersId.includes(user.id))
-    .map((_room) => otherUsers.find((_id) => _room.usersId.includes(_id.id)))
-                               
-    
+    .map((_room) => otherUsers.find((_id) => _room.usersId.includes(_id.id)));
+
   const uniqueChatList = [...new Set(chatList)];
 
-  console.log(rooms);
   const newList = uniqueChatList.map((userobj) => (
     <ChatItem _room={userobj} key={userobj.id} navigation={navigation} />
   ));
@@ -41,11 +38,11 @@ const ChatList = ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView>
-      <Center style={styles.center}>
-        <View style={styles.card}>
-          <Text>{newList}</Text>
-        </View>
-      </Center>
+        <Center style={styles.center}>
+          <View style={styles.card}>
+            <Text>{newList}</Text>
+          </View>
+        </Center>
       </ScrollView>
     </SafeAreaView>
   );
@@ -58,7 +55,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexWrap: "wrap",
     width: "100%",
-    // backgroundColor: "#2a9d8f",
     padding: 20,
   },
   center: {

@@ -1,10 +1,12 @@
+//Libraries
 import { Button } from "native-base";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, View, Picker, Text } from "react-native";
 
-import { useDispatch, useSelector } from "react-redux";
-import { createRoom } from "../../store/actions/roomActions";
+//Components & functions
 import { CHAT_LIST } from "../Navigation/types";
+import { createRoom } from "../../store/actions/roomActions";
 
 const ChatForm = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -19,36 +21,35 @@ const ChatForm = ({ navigation }) => {
 
   return (
     <View>
-      
-    <View style={styles.container}>
-    <Text style={styles.txt} > Start a Chat</Text>
-      <Picker
-        itemStyle={{ color: "white" }}
-        selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
-        onValueChange={(itemValue, itemIndex) =>
-          setRoom({ ...room, users: [itemValue] })
-        }
-      >
-        <Picker.Item color="white" label="select user" value="" />
-        {_users.map((user) => (
-          <Picker.Item
-            color="black"
-            label={user.username}
-            value={user.id}
-            key={user.id}
-          />
-        ))}
-      </Picker>
-      <Button
-        onPress={() =>
-          dispatch(createRoom(room)) && navigation.navigate(CHAT_LIST)
-        }
-        style={styles.btnbtn}
-      >
-        start a chat
-      </Button>
-    </View>
+      <View style={styles.container}>
+        <Text style={styles.txt}> Start a Chat</Text>
+        <Picker
+          itemStyle={{ color: "white" }}
+          selectedValue={selectedValue}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) =>
+            setRoom({ ...room, users: [itemValue] })
+          }
+        >
+          <Picker.Item color="white" label="select user" value="" />
+          {_users.map((user) => (
+            <Picker.Item
+              color="black"
+              label={user.username}
+              value={user.id}
+              key={user.id}
+            />
+          ))}
+        </Picker>
+        <Button
+          onPress={() =>
+            dispatch(createRoom(room)) && navigation.navigate(CHAT_LIST)
+          }
+          style={styles.btnbtn}
+        >
+          start a chat
+        </Button>
+      </View>
     </View>
   );
 };
@@ -60,16 +61,19 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
     alignItems: "center",
-    marginTop:240,
+    marginTop: 240,
   },
-  btnbtn:{
-    width:120,
-    height:40
+  btnbtn: {
+    width: 120,
+    height: 40,
+    backgroundColor:"darkcyan",
+    marginHorizontal:"auto",
+    marginVertical: 35
   },
-  txt:{
-      color:"white",
-      fontSize:28,
-      fontWeight:"bold"
-
-  }
+  txt: {
+    color: "white",
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 28
+  },
 });

@@ -1,12 +1,13 @@
-import { Center, ScrollView } from "native-base";
+//Libraries
 import React, { useEffect } from "react";
-import { StyleSheet, Button, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Center, ScrollView } from "native-base";
+import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRooms } from "../../store/actions/roomActions";
-import { GROUP_FORM } from "../Navigation/types";
-//components
+import { SafeAreaView } from "react-native-safe-area-context";
+
+//Components & functions
 import GroupItem from "./GroupItem";
+import { fetchRooms } from "../../store/actions/roomActions";
 
 const GroupList = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const GroupList = ({ navigation }) => {
   }, []);
   const user = useSelector((state) => state.user.user);
   const rooms = useSelector((state) => state.rooms.rooms);
+
   const groupList = rooms
     .filter((room) => room.usersId.length > 2)
     .filter((users) => users.usersId.includes(user.id))
@@ -22,19 +24,15 @@ const GroupList = ({ navigation }) => {
       <GroupItem _room={_room} navigation={navigation} key={_room.id} />
     ));
 
-  console.log(groupList);
-
   return (
     <SafeAreaView>
       <ScrollView>
-
-      <Center>
-        <View style={styles.card}>
-          <Text>{groupList}</Text>
-        </View>
-      </Center>
+        <Center>
+          <View style={styles.card}>
+            <Text>{groupList}</Text>
+          </View>
+        </Center>
       </ScrollView>
-
     </SafeAreaView>
   );
 };
@@ -49,10 +47,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexWrap: "wrap",
     width: "100%",
-    // backgroundColor: "#2a9d8f",
     padding: 20,
   },
 });
-
-// to reset the form :
-//<Button title="new group" onPress={() => navigation.replace(GROUP_FORM)} />

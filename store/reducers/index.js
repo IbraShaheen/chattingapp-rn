@@ -1,7 +1,10 @@
-import { createStore, applyMiddleware } from "redux";
+//Libraries
 import thunk from "redux-thunk";
-import { checkForToken} from "../actions/authActions";
+import { createStore, applyMiddleware } from "redux";
+
+//reducer & functions
 import rootReducer from "./rootReducer";
+import { checkForToken } from "../actions/authActions";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
