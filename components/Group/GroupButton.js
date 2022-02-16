@@ -17,7 +17,6 @@ const GroupButton = () => {
           style={styles.btnG}
           onPress={() => navigation.navigate(GROUP_FORM)}
         >
-          {" "}
           ➕ New group
         </Button>
       </Center>
@@ -37,5 +36,6 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderColor: "white",
     borderWidth: 1,
+    height: 45,
   },
 });

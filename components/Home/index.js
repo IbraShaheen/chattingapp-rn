@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
   },
   signin: {
     width: 120,
-    marginHorizontal:"auto",
+    marginLeft: 185,
     marginTop: 120,
     backgroundColor: "darkcyan",
     fontWeight: "bold",
   },
   signup: {
     width: 120,
-    marginHorizontal:"auto",
+    marginLeft: 185,
     marginTop: 20,
     backgroundColor: "darkcyan",
     fontWeight: "bold",

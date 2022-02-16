@@ -82,7 +82,7 @@ mainView:{
 applyBtn:{
   backgroundColor: "darkcyan",
   width: 120,
-  marginHorizontal:"auto",
+  marginLeft: 90,
   marginBottom: 10,
 }
 
