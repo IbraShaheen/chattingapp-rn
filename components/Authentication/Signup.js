@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   inbtn: {
     width: 120,
-    marginHorizontal:"auto",
+    marginLeft: 90,
     marginTop: 55,
     backgroundColor: "darkcyan",
     fontWeight: "bold",

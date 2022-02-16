@@ -17,7 +17,6 @@ const CartButton = () => {
           style={styles.btnG}
           onPress={() => navigation.navigate(CHAT_FORM)}
         >
-          {" "}
           ➕ New chat
         </Button>
       </Center>
@@ -37,5 +36,6 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderColor: "white",
     borderWidth: 1,
+    height: 45,
   },
 });
